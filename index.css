@@ -30,6 +30,9 @@
 
     --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
     --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    /* Fontes do logo oficial */
+    --font-logo-serif: 'Cinzel', 'Trajan Pro', Georgia, serif;
+    --font-script: 'Great Vibes', 'Brush Script MT', cursive;
 
     --radius-s: 12px;
     --radius-m: 16px;
@@ -461,29 +464,40 @@ section[id] {
 }
 
 .brand-text {
+    /* Bloco de texto com a mesma altura do ícone: "Panificadora" no topo, "Pão de Mel" na base */
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 44px;
     line-height: 1;
 }
 
 .brand-kicker {
-    font-size: .625rem;
+    /* Cinzel mostra minúsculas como versalete: o "P" fica maior, como no logo */
+    font-family: var(--font-logo-serif);
+    font-size: .8125rem;
     font-weight: 700;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--muted);
+    line-height: 1;
+    letter-spacing: .06em;
+    color: var(--brand);
 }
 
 .brand-name {
-    font-family: var(--font-display);
-    font-size: 1.375rem;
-    font-weight: 700;
+    font-family: var(--font-script);
+    font-size: 1.75rem;
+    font-weight: 400;
+    /* Great Vibes tem ascendentes altos: a caixa cobre toda a letra e a margem
+       inferior negativa descarta só o espaço vazio abaixo dela */
+    line-height: 1.3;
+    margin: 0 0 -.28em -.08em;
+    padding: 0 .22em 0 .08em;
     color: var(--ink);
-    margin-top: 3px;
+    /* Great Vibes só tem peso 400: o contorno na mesma cor engrossa o traço */
+    -webkit-text-stroke: .035em currentColor;
 }
 
 .brand-light .brand-kicker {
-    color: rgba(251, 246, 238, .6);
+    color: var(--honey);
 }
 
 .brand-light .brand-name {
@@ -653,13 +667,27 @@ section[id] {
     margin: 20px 0 20px;
 }
 
-.hero h1 em,
-.about h2 em {
+.hero h1 em {
     font-style: italic;
     font-weight: 600;
     color: var(--brand);
     background: linear-gradient(transparent 68%, rgba(242, 179, 61, .45) 68%, rgba(242, 179, 61, .45) 92%, transparent 92%);
     padding: 0 .06em;
+}
+
+.about h2 em {
+    font-family: var(--font-script);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.38em;
+    line-height: .8;
+    word-spacing: .08em;
+    padding: .08em .28em .14em .08em;
+    color: var(--brand);
+    -webkit-text-stroke: .03em currentColor;
+    /* Faixa de mel sob o texto, alinhada à linha de base da Great Vibes */
+    background: linear-gradient(transparent 56%, rgba(242, 179, 61, .45) 56%, rgba(242, 179, 61, .45) 76%, transparent 76%)
+        no-repeat 0 0 / calc(100% - .2em) 100%;
 }
 
 .hero-lead {
